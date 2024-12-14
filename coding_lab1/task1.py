@@ -2,7 +2,7 @@ import doctest
 
 
 class Physicist:
-    def __init__(self, occupation: str, hobbies: str):
+    def __init__(self, occupation: str, hobbies: str = None):
         """
         Создание и подготовка к работе объекта "физик"
 
@@ -10,21 +10,21 @@ class Physicist:
         :param hobbies: Его хобби
 
         Примеры:
-        >>> student1 = Physicist('not a janitor', 'none')
+        >>> student1 = Physicist('not a janitor')
         Nice
         """
         if not isinstance(occupation, str):
             raise TypeError('Occupation must be a string')
-        if occupation.casefold() == ('janitor'.casefold() or 'coder'.casefold()):
+        if occupation.casefold() == 'janitor'.casefold() or occupation.casefold() == 'coder'.casefold():
             raise ValueError('Really?')
         self.occupation = occupation
-        if hobbies.casefold() == 'none'.casefold():
+        if hobbies is None:
             print('Nice')
         self.hobbies = hobbies
         self.semesters_passed = 0
-        self.social_life = 'none'
+        self.social_life = None
 
-    def survive_the_midterms(self):
+    def survive_the_midterms(self) -> bool:
         """
         Функция которая проверяет пережил ли студент зимнюю сессию
 
@@ -32,28 +32,28 @@ class Physicist:
         :raise: ValueError мы не допускаем ничего кроме благодетели
 
         Примеры:
-        >>> student1 = Physicist('not a janitor', 'none')
+        >>> student1 = Physicist('not a janitor')
         Nice
         >>> student1.survive_the_midterms()
         True
         """
-        if self.hobbies.casefold() == 'vice'.casefold():
-            raise ValueError('We do not do that here, lil bro.')
-        if self.hobbies.casefold() == 'none'.casefold():
+        if self.hobbies is None:
             return True
             self.semesters_passed += 1
         else:
+            if self.hobbies.casefold() == 'vice'.casefold():
+                raise ValueError('We do not do that here, lil bro.')
             return False
 
-    def get_a_life(self, want_a_life='no'):
+    def get_a_life(self, want_a_life: str = 'no') -> None:
         """
         Функция, позволяющая увеличить количество пройденных семестров или дать объекту личную жизнь
 
         :param want_a_life: нужна ли физику личная жизнь
-        :raises: TypeError: get_a_life должен быть строкой
+        :raise: TypeError: get_a_life должен быть строкой
 
         Примеры:
-        >>> student1 = Physicist('not a janitor', 'none')
+        >>> student1 = Physicist('not a janitor')
         Nice
         >>> student1.get_a_life()
         """
@@ -93,7 +93,7 @@ class Bodybuilder:
         self.weight = weight
         self.bodyfat_percentage = 20
 
-    def train(self):
+    def train(self) -> tuple:
         """
         Функция которая улучшает физические показатели бодибилдера и возвращает их
 
@@ -110,7 +110,7 @@ class Bodybuilder:
         fat_free_mass = self.weight * (100 - self.bodyfat_percentage) / 100
         return self.bodyfat_percentage, self.weight, fat_free_mass
 
-    def get_injured(self, gravity='severe'):  #проверка пишет, что нужно аннотировать возвращаемое значение, но его нет.
+    def get_injured(self, gravity: str = 'severe') -> None:
         """
         Функция которая реализует травму
 
@@ -152,7 +152,7 @@ class Polyglot:
             raise TypeError('How is that possible? Fractional age, seriously?')
         self.age_in_years = age_in_years
 
-    def check_for_altzheimers(self):
+    def check_for_altzheimers(self) -> str:
         """
         Функция которая проверяет на болезнь Альцгеймера
 
@@ -163,19 +163,18 @@ class Polyglot:
         """
         if self.age_in_years <= 50:
             return 'Come in later'
-        if self.num_of_languages == 2:
-            return 'No'
-        elif self.num_of_languages == 3:
-            return 'Nope'
+            if self.num_of_languages == 2:
+                return 'No'
+            elif self.num_of_languages == 3:
+                return 'Nope'
         else:
             return 'Definitely not altzheimers'
 
-    def acquire_a_language(self, did_work_hard='yes'):
+    def acquire_a_language(self, did_work_hard: str = 'yes') -> None:
         """
         Функция которая реализует изучение новых языков
 
         :param did_work_hard: насколько жестко велась работа
-
         :raise: ValueError: did_work_hard должен быть строкой
 
         Примеры:
