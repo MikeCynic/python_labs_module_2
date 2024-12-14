@@ -17,5 +17,3 @@ if __name__ == "__main__":
         adonis.acquire_a_language(1)
     except TypeError:
         print('Ошибка: неправильные данные')
-
-
