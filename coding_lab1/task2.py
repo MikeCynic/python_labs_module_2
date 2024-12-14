@@ -1,4 +1,4 @@
-from task_1 import Physicist, Bodybuilder, Polyglot  #не видит импортированные классы, не понимаю почему
+from task_1 import Physicist, Bodybuilder, Polyglot
 
 
 student1 = Physicist('none', 'something')
