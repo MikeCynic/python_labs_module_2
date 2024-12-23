@@ -19,6 +19,12 @@ class PaperBook(Book):
             raise ValueError
         self.pages = pages
 
+    def name(self):
+        return self._name
+
+    def author(self):
+        return self._author
+
     def __repr__(self):
         return f"{self.__class__.__name__}(name={self.name!r}, author={self.author!r}, pages={self.pages!r})"
 
@@ -30,5 +36,11 @@ class AudioBook(Book):
             raise ValueError
         self.duration = duration
 
+    def name(self):
+        return self._name
+
+    def author(self):
+        return self._author
+    
     def __repr__(self):
         return f"{self.__class__.__name__}(name={self.name!r}, author={self.author!r}, duration={self.duration!r})"
