@@ -1,7 +1,4 @@
 # TODO: описать базовый класс
-import doctest
-
-
 class Human:
     def __init__(self, name: str, age: int):
         """
@@ -24,7 +21,7 @@ class Human:
         return f'{self._name}, {self._age} years old'
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}(name={self.name!r}, age={self.age!r})"
+        return f"{self.__class__.__name__}(name={self._name!r}, age={self._age!r})"
 
     def be_bored_do_nothing(self) -> None:
         """
@@ -47,5 +44,5 @@ class Grad_Student(Human):
         """
             Метод, реализующий "пустую" трату времени объектом.
         """
-        self._age += 1
+        super().be_bored_do_nothing()
         print('you did some groundbreaking research instead of taking a break, comrade.')
